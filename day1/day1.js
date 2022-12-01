@@ -1,3 +1,5 @@
+// --------------- PART I ----------------------
+
 const fs = require('fs');
 
 //read the input file and convert to nested array of numbers
@@ -15,6 +17,10 @@ console.log(input.length)
 const obj = input.map((item) => [item.reduce((a, b) => a + b, 0)])
 console.log(Math.max(...obj.flat()))
 
+
+// ----------------- PART II ------------------------
+
+console.log(obj.flat().sort((a, b) => b - a).slice(0, 3).reduce((a, b) => a + b, 0))
 // console.log(obj)
 // console.log(obj.length)
 // console.log(obj.flat())
