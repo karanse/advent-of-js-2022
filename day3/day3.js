@@ -4,8 +4,8 @@ const fs = require('fs');
 //read input file and parse it to array of two arrays for each comportements of rucksack
 const input = fs.readFileSync('./input.txt', 'utf8').toString().trim().split('\n')
 const nestedInput = input.map((e) => { 
-    let firstArray = [...e].splice(0,e.length/2)
-    let secondArray = [...e].splice(e.length/2, e.length)
+    let firstArray = [...e].slice(0,e.length/2)
+    let secondArray = [...e].slice(e.length/2, e.length)
     return [firstArray, secondArray];
 });
 // console.log(input.splice(0, 2))
@@ -13,6 +13,8 @@ const nestedInput = input.map((e) => {
 
 //Find the intersection of the compertaments of each rucksack
 const intersectaionArray = nestedInput.map(e => e.reduce((a, b) => a.filter(c => b.includes(c))));
+
+//remove the duplicate letters if there is more than one intersection letters and then flatten the array
 const intersectionLettersArray = intersectaionArray.map(e => [...new Set(e)]).flat()
 
 
